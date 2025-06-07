@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --tooltip-bg: theme('colors.white');
+  --tooltip-border: theme('colors.gray.200');
+}
+
+.dark {
+  --tooltip-bg: theme('colors.gray.800');
+  --tooltip-border: theme('colors.gray.700');
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.gray.300');
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: theme('colors.gray.600');
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.gray.400');
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.gray.500');
+}
+
+/* Toggle switch */
+.toggle {
+  @apply relative inline-flex h-6 w-11 items-center rounded-full bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-gray-700;
+}
+
+.toggle:checked {
+  @apply bg-blue-600;
+}
+
+.toggle::before {
+  content: '';
+  @apply absolute inline-block h-4 w-4 transform rounded-full bg-white transition-transform;
+  left: 4px;
+}
+
+.toggle:checked::before {
+  transform: translateX(20px);
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
